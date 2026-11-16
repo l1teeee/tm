@@ -20,7 +20,7 @@ body {
 }
 
 .pile {
-  --pile-spread: 1vw;
+  --pile-spread: 0.4vw;
   --pile-max-width: 44vw;
 }
 
