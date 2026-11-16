@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #ffffff;
+  --color-foreground: #111111;
+  --font-sans: var(--font-inter-tight), Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-background);
+  background-image:
+    linear-gradient(rgb(0 0 0 / 0.2), rgb(0 0 0 / 0.2)),
+    url("/textures/grunge.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+}
+
+.pile {
+  --pile-spread: 1vw;
+  --pile-max-width: 44vw;
+}
+
+@media (orientation: portrait) {
+  .pile {
+    --pile-spread: 0.42vw;
+    --pile-max-width: 52vw;
+  }
+}
+
+.pile-sheet {
+  position: absolute;
+  left: calc(50% + var(--offset-x) * var(--pile-spread));
+  top: calc(50% + var(--offset-y) * 1svh);
+  width: min(calc(var(--display-height) * var(--aspect-ratio) * 1svh), var(--pile-max-width));
+  height: auto;
+  transform: translate(-50%, -50%);
+  visibility: hidden;
+  filter: grayscale(1);
+}
+
+.pile-sheet[data-visible="true"] {
+  visibility: visible;
+}
+
+.pile-sheet[data-state="velo"] {
+  opacity: 0.86;
+}
